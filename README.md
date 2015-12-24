@@ -12,4 +12,7 @@ npm run start:1
 
 # a list of articles + author with filtered and extended data examples
 npm run start:2
+
+# a restful example (GET, POST, PATCH, PUT, DELETE)
+npm run start:3
 ```

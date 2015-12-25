@@ -12,8 +12,8 @@
   "author": "Alexis MINEAUD <alexis.mineaud@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "bouchon": "0.0.1",
-    "bouchon-toolbox": "0.0.1",
+    "bouchon": "^0.0.2",
+    "bouchon-toolbox": "^0.0.1",
     "freeport": "^1.0.5",
     "request": "^2.67.0"
   },

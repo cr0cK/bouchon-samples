@@ -25,14 +25,54 @@ describe('3 - List articles (restful)', function test() {
   });
 
   after((done) => {
-    // expect(bouchon.logs.get()).to.deep.equal([{
-    //   method: 'GET',
-    //   originalUrl: '/articles',
-    //   statusCode: 200,
-    //   query: {},
-    //   params: {},
-    //   body: {},
-    // }]);
+    expect(bouchon.logs.get()).to.deep.equal([{
+      method: 'GET',
+      originalUrl: '/articles',
+      statusCode: 200,
+      query: {},
+      params: {},
+      body: {} },
+    { method: 'POST',
+      originalUrl: '/articles',
+      statusCode: 200,
+      query: {},
+      params: {},
+      body:
+       { title: 'Title1',
+         body: 'Body1',
+         date_created: this.dateCreated,
+         user_id: '2' } },
+    { method: 'PATCH',
+      originalUrl: '/articles/2',
+      statusCode: 200,
+      query: {},
+      params: { id: '2' },
+      body: { title: 'Title1 patched', body: 'Body1 patched' } },
+    { method: 'PUT',
+      originalUrl: '/articles/3',
+      statusCode: 200,
+      query: {},
+      params: { id: '3' },
+      body: { title: 'Title2', body: 'Body2', user_id: '3' } },
+    { method: 'PUT',
+      originalUrl: '/articles/2',
+      statusCode: 200,
+      query: {},
+      params: { id: '2' },
+      body: { title: 'Title1 patched again', body: 'Body1 patched again' } },
+    { method: 'DELETE',
+      originalUrl: '/articles/2',
+      statusCode: 200,
+      query: {},
+      params: { id: '2' },
+      body: {} },
+    { method: 'GET',
+      originalUrl: '/articles',
+      statusCode: 200,
+      query: {},
+      params: {},
+      body: {},
+    }]);
 
     bouchon.server.stop().then(() => done());
   });

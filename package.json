@@ -1,6 +1,6 @@
 {
   "name": "bouchon-samples",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A set of API made with Bouchon, useful for mocking and testing.",
   "scripts": {
     "lint": "eslint .",

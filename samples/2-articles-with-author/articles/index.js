@@ -24,7 +24,6 @@ export const selectors = {};
 selectors.all = () => state => state.articles;
 
 // use the extendRows function of the toolbox to add the author data to each article
-// See the source code of extendRows here: <TODO>
 selectors.allWithAuthor = () => extendRows(
   selectors.all, 'author_id',
   authorsSelectors.all, 'id',
@@ -32,7 +31,6 @@ selectors.allWithAuthor = () => extendRows(
 );
 
 // use the selectRow function of the toolbox to filter results
-// See the source code of selectRow here: <TODO>
 selectors.byId = ({id}) => selectRow(selectors.allWithAuthor, 'id', id);
 
 /**

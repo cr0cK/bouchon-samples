@@ -1,4 +1,4 @@
-import { createAction } from 'bouchon';
+import { createAction, createSelector } from 'bouchon';
 
 /**
  * Actions
@@ -14,9 +14,18 @@ const actions = {
 
 const selectors = {};
 
-// The selector is a function that takes parameters (from querystring, url captures and body) and return an another function that takes the entire state and returns the wanted data.
-// Here, we define a function `all` that returns all the articles.
+// The selector is a function that takes params
+// (merge of querystring, url captures and body parameters)
+// and return an another function that takes the entire state and returns the wanted data.
+// Here, we define a `all` selector that returns all the articles.
 selectors.all = (/* params */) => state => state.articles;
+
+// Create a selector that filters articles according to an id
+selectors.byId = ({id}) => createSelector(
+  selectors.all(),
+  articles => articles.filter(article => Number(article.id) === Number(id)).pop(),
+);
+
 
 /**
  * Specs
@@ -38,6 +47,11 @@ export default {
     'GET /': {
       action: actions.get,
       selector: selectors.all,
+      status: 200,
+    },
+    'GET /:id': {
+      action: actions.get,
+      selector: selectors.byId,
       status: 200,
     },
   },

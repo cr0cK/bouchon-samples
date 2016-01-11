@@ -3,7 +3,7 @@ import { selectors as selectorsTb } from 'bouchon-toolbox';
 
 import { selectors as authorsSelectors } from '../authors';
 
-const { selectRow, extendRows } = selectorsTb;
+const { selectRows, extendRows } = selectorsTb;
 
 
 /**
@@ -30,8 +30,8 @@ selectors.allWithAuthor = () => extendRows(
   'author'
 );
 
-// use the selectRow function of the toolbox to filter results
-selectors.byId = ({id}) => selectRow(selectors.allWithAuthor, 'id', id);
+// use the selectRows function of the toolbox to filter results
+selectors.byId = ({id}) => selectRows(selectors.allWithAuthor(), 'id', id);
 
 /**
  * Specs

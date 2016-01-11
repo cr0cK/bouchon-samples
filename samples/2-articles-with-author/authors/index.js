@@ -1,7 +1,7 @@
 import { createAction } from 'bouchon';
 import { selectors as selectorsTb } from 'bouchon-toolbox';
 
-const { selectRow } = selectorsTb;
+const { selectRows } = selectorsTb;
 
 
 /**
@@ -20,9 +20,8 @@ export const selectors = {};
 
 selectors.all = () => state => state.authors;
 
-// use the selectRow function of the toolbox to filter results
-// See the source code of selectRow here: <TODO>
-selectors.byId = ({id}) => selectRow(selectors.all, 'id', id);
+// use the selectRows function of the toolbox to filter results
+selectors.byId = ({id}) => selectRows(selectors.all(), 'id', id);
 
 /**
  * Specs

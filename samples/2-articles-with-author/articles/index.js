@@ -3,7 +3,7 @@ import { selectors as selectorsTb } from 'bouchon-toolbox';
 
 import { selectors as authorsSelectors } from '../authors';
 
-const { selectRows, extendRows } = selectorsTb;
+const { filterRows, extendRows } = selectorsTb;
 
 
 /**
@@ -25,13 +25,13 @@ selectors.all = () => state => state.articles;
 
 // use the extendRows function of the toolbox to add the author data to each article
 selectors.allWithAuthor = () => extendRows(
-  selectors.all, 'author_id',
-  authorsSelectors.all, 'id',
+  selectors.all(), 'author_id',
+  authorsSelectors.all(), 'id',
   'author'
 );
 
-// use the selectRows function of the toolbox to filter results
-selectors.byId = ({id}) => selectRows(selectors.allWithAuthor(), 'id', id);
+// use the filterRows function of the toolbox to filter results
+selectors.byId = ({id}) => filterRows(selectors.allWithAuthor(), 'id', id);
 
 /**
  * Specs
